@@ -1,0 +1,95 @@
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    padding: 20px;
+  }
+  
+  .signup-page h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .signup-page p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .signup-page form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signup-page input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .signup-page button[type="submit"] {
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0073e6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signup-page button[type="submit"]:hover {
+    background-color: #005bb5;
+  }
+  
+  .or-with {
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .facebook-button {
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #3b5998;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  
+  .google-button {
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #db4437;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .login-link {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .login-link a {
+    color: #0073e6;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  

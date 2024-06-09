@@ -7,16 +7,36 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleEmailSignUp = (event) => {
     event.preventDefault();
+
+    // Basic validations
+    if (!username || !email || !phone || !password) {
+      setErrorMessage('All fields are required');
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setErrorMessage('Invalid email address');
+      return;
+    }
+
+    if (!/^\d{10}$/.test(phone)) {
+      setErrorMessage('Invalid phone number');
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('Signed up with email:', user);
+        // Optionally update the user profile with additional information (username, phone, etc.)
       })
       .catch((error) => {
         console.error('Error signing up with email:', error);
+        setErrorMessage('Error signing up with email. Please try again.');
       });
   };
 
@@ -28,6 +48,7 @@ function SignupPage() {
       })
       .catch((error) => {
         console.error('Error signing in with Google:', error);
+        setErrorMessage('Error signing in with Google. Please try again.');
       });
   };
 
@@ -39,6 +60,7 @@ function SignupPage() {
       })
       .catch((error) => {
         console.error('Error signing in with Facebook:', error);
+        setErrorMessage('Error signing in with Facebook. Please try again.');
       });
   };
 
@@ -56,6 +78,7 @@ function SignupPage() {
       <div className="or-with">Or With</div>
       <button className="facebook-button" onClick={handleFacebookSignIn}>Signup with Facebook</button>
       <button className="google-button" onClick={handleGoogleSignIn}>Signup with Google</button>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <div className="login-link">
         Already have an account? <a href="/login">Login</a>
       </div>

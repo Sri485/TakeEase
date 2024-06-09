@@ -32,6 +32,7 @@
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
 }
 
 .signup-page button[type="submit"] {
@@ -109,4 +110,15 @@
 
 .login-link a:hover {
   text-decoration: underline;
+}
+.input-container {
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
 }

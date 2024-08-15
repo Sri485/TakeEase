@@ -1,124 +1,85 @@
-/* src/SignupPage.css */
-.signup-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+body {
   font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
-  padding: 20px;
-}
-
-.signup-page h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.signup-page p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.signup-page form {
+  background-color: #f5f5f5;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-}
-
-.signup-page input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.signup-page button[type="submit"] {
-  padding: 10px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.signup-page button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-.or-with {
-  margin: 20px 0;
-  font-size: 1rem;
-  color: #666;
-  display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.or-with::before,
-.or-with::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #ccc;
+.login-page {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
 }
 
-.or-with::before {
-  margin-right: 10px;
+h2 {
+  margin-bottom: 0.5rem;
 }
 
-.or-with::after {
-  margin-left: 10px;
+p {
+  margin-bottom: 1.5rem;
+  color: #666666;
 }
 
-.facebook-button {
-  padding: 10px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #3b5998;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.input-container {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-container input {
   width: 100%;
-  max-width: 400px;
-  margin-bottom: 10px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  font-size: 14px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 14px;
+}
+
+.sign-in-btn {
+  background-color: #f0c14b; /* Yellow color */
+  color: #333;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .google-button {
-  padding: 10px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #db4437;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: #ffffff;
+  color: #4285f4;
+  border: 1px solid #4285f4;
+  padding: 0.75rem;
+  border-radius: 4px;
   width: 100%;
-  max-width: 400px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.login-link {
-  font-size: 0.9rem;
-  color: #666;
+.signup-link {
+  margin-top: 1rem;
+  font-size: 14px;
 }
 
-.login-link a {
-  color: #007bff;
+.signup-link a {
+  color: #ff4c4c;
   text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
-}
-.input-container {
-  margin-bottom: 10px;
 }
 
 .error-message {
   color: red;
-}
-
-.success-message {
-  color: green;
+  margin-top: 1rem;
 }

@@ -1,0 +1,116 @@
+.profile-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .profile-picture-large {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .profile-details h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .profile-details p {
+    margin: 0;
+    color: #777;
+  }
+  
+  .profile-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .profile-options li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .profile-options li:last-child {
+    border-bottom: none;
+  }
+  
+  .icon {
+    margin-right: 10px;
+  }
+  
+  .option-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .toggle-switch {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .toggle-switch:checked {
+    background-color: #6a1b9a;
+  }
+  
+  .toggle-switch:checked::before {
+    transform: translateX(20px);
+  }
+  
+  .toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .plan-info {
+    padding: 15px 20px;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .upgrade-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: calc(100% - 40px);
+  }
+  
+  .upgrade-button:hover {
+    background-color: #135abc;
+  }
+  

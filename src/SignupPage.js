@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import { auth, googleProvider, facebookProvider, signInWithPopup, createUserWithEmailAndPassword } from './firebase'; // Adjust the path if needed
-import './SignupPage.css';
+import { auth, googleProvider, signInWithEmailAndPassword, signInWithPopup } from './firebase';
+import { useNavigate } from 'react-router-dom'; // Adjust the path if needed
+import './LoginPage.css';
 
-function SignupPage() {
-  const [username, setUsername] = useState('');
+function LoginPage() {
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleEmailSignUp = (event) => {
+  const handleEmailSignIn = (event) => {
     event.preventDefault();
 
     // Reset previous messages
     setErrorMessage('');
-    setSuccessMessage('');
 
     // Basic validations
-    if (!username.trim() || !email.trim() || !phone.trim() || !password.trim()) {
+    if (!email.trim() || !password.trim()) {
       setErrorMessage('All fields are required');
       return;
     }
@@ -28,34 +26,16 @@ function SignupPage() {
       return;
     }
 
-    if (!/^\d+$/.test(phone)) {
-      setErrorMessage('Phone number should contain only digits');
-      return;
-    }
-
-    // Password validation
-    if (password.length < 6 || password.length > 14) {
-      setErrorMessage('Password must be between 6 and 14 characters long');
-      return;
-    }
-
-    if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(password)) {
-      setErrorMessage('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character');
-      return;
-    }
-
-    // All validations passed, show success message
-    setSuccessMessage('Sign up successful!');
-
-    createUserWithEmailAndPassword(auth, email, password)
+    // Firebase email/password sign-in
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log('Signed up with email:', user);
-        // Optionally update the user profile with additional information (username, phone, etc.)
+        console.log('Signed in with email:', user);
+        navigate('/dashboard');
       })
       .catch((error) => {
-        console.error('Error signing up with email:', error);
-        setErrorMessage('Error signing up with email. Please try again.');
+        console.error('Error signing in with email:', error);
+        setErrorMessage('Error signing in with email. Please try again.');
       });
   };
 
@@ -64,6 +44,7 @@ function SignupPage() {
       .then((result) => {
         const user = result.user;
         console.log('Signed in with Google:', user);
+        navigate('/dashboard');
       })
       .catch((error) => {
         console.error('Error signing in with Google:', error);
@@ -71,38 +52,44 @@ function SignupPage() {
       });
   };
 
-
   return (
-    <div className="signup-page">
-      <h1>Create an account</h1>
-      <p>Connect with your friends today!</p>
-      <form onSubmit={handleEmailSignUp}>
+    <div className="login-page">
+      <h2>WELCOME BACK</h2>
+      <p>Welcome back! Please enter your details.</p>
+      <form onSubmit={handleEmailSignIn}>
         <div className="input-container">
-          <input type="text" placeholder="Enter Your Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
         <div className="input-container">
-          <input type="email" placeholder="Enter Your Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-        <div className="input-container">
-          <input type="tel" placeholder="Enter Your Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <div className="options">
+          <label>
+            <input type="checkbox" /> Remember me
+          </label>
+          <a href="#">Forgot password</a>
         </div>
-        <div className="input-container">
-          <input type="password" placeholder="Enter Your Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
-        </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="sign-in-btn">Sign in</button>
       </form>
-      <div className="or-with">Or With</div>
-      <button className="google-button" onClick={handleGoogleSignIn}>Signup with Google</button>
-      {successMessage && <div className="success-message">{successMessage}</div>}
-      <div className="login-link">
-        Already have an account? <a href="/login">Login</a>
+      <button className="google-button" onClick={handleGoogleSignIn}>Sign in with Google</button>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      <div className="signup-link">
+        Don’t have an account? <a href="/signup">Sign up for free!</a>
       </div>
     </div>
   );
 }
 
-export default SignupPage;
+export default LoginPage;
